@@ -39,22 +39,9 @@ public class AccountTest {
     }
 
     @Test
-    public void testThatWhenITransferFromAnEmptyAccountBalanceDoesNotChange() {
-        myAccount.transfer(500);
-        assertEquals(0, myAccount.getBalance());
-    }
-
-    @Test
-    public void testThatWhenITransferFromAccountTheBalanceDecreases() {
+    public void testThatWhenIWithdrawANegativeAmountBalanceDoesNotChange() {
         myAccount.deposit(1000);
-        myAccount.transfer(700);
-        assertEquals(300, myAccount.getBalance());
-    }
-
-    @Test
-    public void testThatWhenITransferANegativeAmountBalanceDoesNotChange() {
-        myAccount.deposit(1000);
-        myAccount.transfer(-500);
+        myAccount.withdraw(-500);
         assertEquals(1000, myAccount.getBalance());
     }
 }
