@@ -1,0 +1,27 @@
+PSEUDOCODE
+TOP-LEVEL
+A Linear regression program predicting the exam score of students based on the hours they of studies
+STEP-WISE REFINEMENT
+Declare an array for hours of studies --X
+Declare an array for exam scores --Y
+initialise the counter for sum (hours of studies) to zero
+initialise the counter for sum (exam scores) to zero
+initialise the counter for sumHours&Score to zero (sum of each hour multiplied by score)
+initialise the counter for hoursSquared to zero
+Initialise totalStudents to array length of hoursStudied
+
+Loop through the first array
+    sum up the hours of studies
+
+Loop through the second array
+    sum up the exam scores
+
+Multiply each element in first array by each element in second array, and sum it all
+Square each element in first array and return the sum
+
+calculate scorePerHour equals to
+(totalStudents * sumHoursAndScores) - (sumHoursStudied * sumScores) /  (totalStudents * sumHoursSquared - sumHoursStudied * sumHoursStudied)
+
+baseScore = (sumScores - scorePerHour * sumHoursStudied)/ totalStudents
+collect input from user and store in variable userHoursStudied
+predictedScore = baseScore + scorePerHour * userHoursStudied
