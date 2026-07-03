@@ -1,4 +1,4 @@
-package dataStructureAlgorithm;
+package account;
 
 public class Account {
     private int balance;
