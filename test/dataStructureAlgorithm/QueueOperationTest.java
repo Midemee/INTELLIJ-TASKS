@@ -1,4 +1,4 @@
-package queueOperations;
+package dataStructureAlgorithm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,7 +55,7 @@ public class QueueOperationTest {
     }
 
     @Test
-    public void testThatDequeuingAnEmptyQueueThrowsExceptionError() {
+    public void testThatRemovingFromAnEmptyQueueThrowsExceptionError() {
         queue.enqueue("Mide");
         queue.enqueue("Tosin");
 
@@ -81,6 +81,19 @@ public class QueueOperationTest {
         queue.enqueue("Aramide");
 
         assertEquals("Bolu", queue.peek());
+    }
+
+    @Test
+    public void testThatIPeekThroughAnEmptyQueueItReturnsNull() {
+        assertNull(queue.peek());
+    }
+
+    @Test
+    public void testThatIGetTheElementAtTheHeadOfQueueWithoutRemovingIt(){
+        queue.enqueue("Bolu");
+        queue.enqueue("Aramide");
+        queue.enqueue("Tobi");
+        assertEquals("Bolu", queue.element());
     }
 
 }

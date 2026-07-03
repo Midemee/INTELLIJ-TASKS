@@ -1,4 +1,4 @@
-package stackOperations;
+package dataStructureAlgorithm;
 
 public class StacksOperation {
     private int count;

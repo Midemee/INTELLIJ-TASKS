@@ -1,4 +1,4 @@
-package queueOperations;
+package dataStructureAlgorithm;
 
 public class QueueOperation {
 private int front;
@@ -31,6 +31,11 @@ public String dequeue(){
 }
 
 public String peek(){
+    if(isEmpty()) return null;
+    return elements[front];
+}
+
+public String element(){
     return elements[front];
 }
 
