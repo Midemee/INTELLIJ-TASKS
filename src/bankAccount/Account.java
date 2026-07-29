@@ -1,19 +1,21 @@
 package bankAccount;
 
-public class Account {
-    private String name;
-    private int balance;
-    private String pin;
-    private int number;
+import java.math.BigDecimal;
 
-    public Account(String firstName, String lastName, String pin, int number){
+public class Account {
+    private final String name;
+    private BigDecimal balance;
+    private final String pin;
+    private final String number;
+
+    public Account(String firstName, String lastName, String pin, String number){
         this.name = firstName + " " + lastName;
         this.pin = pin;
         this.number = number;
-        this.balance = 0;
+        this.balance = BigDecimal.ZERO;
     }
 
-    public int getNumber(){
+    public String getNumber(){
         return number;
     }
 
@@ -21,34 +23,36 @@ public class Account {
         return name;
     }
 
-    public int getBalance(String pin){
-        if (validatePin(pin)) {
+    public BigDecimal getBalance(String pin){
+        if (!isValidPin(pin)) {
         throw new IllegalArgumentException("Invalid Pin");
     }
         return balance;
     }
 
-    public void deposit(int depositAmount){
-        if(depositAmount > 0){
-            balance = balance + depositAmount;
+    public void deposit(BigDecimal depositAmount){
+        if(depositAmount.compareTo(BigDecimal.ZERO) > 0){
+            balance = balance.add(depositAmount);
         }else{
             throw new IllegalArgumentException("Invalid deposit amount");
         }
     }
 
-    public void withdraw(int amount, String pin){
-        if (validatePin(pin)) {
+    public void withdraw(BigDecimal amount, String pin){
+        if (!isValidPin(pin)) {
             throw new IllegalArgumentException("Invalid Pin");
         }
-        if(amount > 0 && amount <= balance){
-            balance = balance - amount;
-        }else{
+        if(amount.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Invalid amount");
+        }
+        if(balance.compareTo(amount) < 0){
             throw new IllegalArgumentException("Insufficient funds");
         }
+        balance = balance.subtract(amount);
     }
 
-    public boolean validatePin(String pin){
-        return !this.pin.equals(pin);
+    public boolean isValidPin(String pin){
+        return this.pin.equals(pin);
     }
 
 }
